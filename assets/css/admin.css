@@ -430,6 +430,13 @@ body.wp-core-ui .ipl .button .dashicons {
 	transition: border-color 150ms var(--ipl-ease), box-shadow 150ms var(--ipl-ease);
 }
 
+/* WordPress gives selects a larger line-height; match the 40px inputs. */
+.ipl .ipl-field select {
+	height: 40px;
+	line-height: 1.5;
+	padding-right: 32px;
+}
+
 .ipl .ipl-field input:hover,
 .ipl .ipl-field select:hover,
 .ipl .ipl-field textarea:hover {

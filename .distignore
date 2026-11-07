@@ -25,6 +25,7 @@ phpunit.xml.dist
 # Dev directories
 vendor
 tests
+docs
 node_modules
 
 # Docs (readme.txt is the WordPress.org readme)

@@ -61,7 +61,21 @@ Yes. The default is ৳. Use the `imei_ledger_currency_symbol` filter:
 
 Any user with the `manage_imei_ledger` capability. Use a role editor plugin to give it to other roles.
 
+== Screenshots ==
+
+1. All phones: this month's profit, stock and purchases, search by IMEI, name, mobile number, NID or model, and the phone list.
+2. Add purchase: the live IMEI check warns that this phone was bought and sold before.
+3. A phone that is already in stock cannot be added twice.
+4. Sell phone: the profit appears as you type the sale price.
+5. One phone's full record: purchase, sale, profit and a link to check the IMEI on BTRC NEIR.
+6. Reports: profit, stock and purchases for any date range, sales with profit per phone, and CSV downloads.
+
 == Changelog ==
 
 = 1.0.0 =
 * First release.
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+First release.
