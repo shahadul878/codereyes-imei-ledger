@@ -1,0 +1,869 @@
+/*
+ * IMEI Phone Ledger — admin styles.
+ *
+ * Direction: a shop's ledger book. Warm paper surfaces, ink-dark text,
+ * tabular monospace numbers for IMEIs and money, one green for profit and
+ * one red for loss. Scoped under .ipl so WordPress admin stays untouched.
+ */
+
+.ipl {
+	--ipl-paper: #fbfaf7;
+	--ipl-surface: #ffffff;
+	--ipl-ink: #1c1917;
+	--ipl-ink-soft: #57534e;
+	--ipl-ink-faint: #a8a29e;
+	--ipl-rule: #e7e5e4;
+	--ipl-rule-strong: #d6d3d1;
+	--ipl-accent: #14532d;
+	--ipl-accent-soft: #dcfce7;
+	--ipl-gain: #15803d;
+	--ipl-loss: #b91c1c;
+	--ipl-loss-soft: #fef2f2;
+	--ipl-warn: #92400e;
+	--ipl-warn-soft: #fffbeb;
+	--ipl-warn-rule: #fcd34d;
+	--ipl-stock: #1d4ed8;
+	--ipl-stock-soft: #eff6ff;
+
+	--ipl-font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+	--ipl-radius-sm: 6px;
+	--ipl-radius: 10px;
+	--ipl-radius-lg: 14px;
+	--ipl-shadow: 0 1px 0 rgba(28, 25, 23, 0.04), 0 1px 3px rgba(28, 25, 23, 0.06);
+	--ipl-shadow-raised: 0 1px 0 rgba(28, 25, 23, 0.04), 0 8px 24px -12px rgba(28, 25, 23, 0.25);
+	--ipl-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+	max-width: 1180px;
+	color: var(--ipl-ink);
+}
+
+/* ---------- Header ---------- */
+
+.ipl-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin: 12px 0 20px;
+}
+
+.ipl-eyebrow {
+	margin: 0 0 4px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl .ipl-title {
+	margin: 0;
+	padding: 0;
+	font-size: clamp(22px, 1.2rem + 0.8vw, 30px);
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: var(--ipl-ink);
+}
+
+.ipl-header__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* body.wp-core-ui outranks admin themes that colour every button icon with the accent. */
+body.wp-core-ui .ipl .button .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
+	margin-right: 2px;
+	color: inherit;
+}
+
+/* ---------- Numbers ---------- */
+
+.ipl-imei,
+.ipl-mono,
+.ipl-amount,
+.ipl-stat__value,
+.ipl-num {
+	font-family: var(--ipl-font-mono);
+	font-variant-numeric: tabular-nums;
+}
+
+.ipl-imei {
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+.ipl-muted {
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-gain {
+	color: var(--ipl-gain);
+	font-weight: 600;
+}
+
+.ipl-loss {
+	color: var(--ipl-loss);
+	font-weight: 600;
+}
+
+/* ---------- Summary cards ---------- */
+
+.ipl-stats {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 1fr;
+	gap: 12px;
+	margin: 0 0 20px;
+}
+
+.ipl-stat {
+	padding: 18px 20px;
+	background: var(--ipl-surface);
+	border: 1px solid var(--ipl-rule);
+	border-radius: var(--ipl-radius-lg);
+	box-shadow: var(--ipl-shadow);
+}
+
+.ipl-stat--hero {
+	background:
+		linear-gradient(135deg, rgba(20, 83, 45, 0.06), transparent 60%),
+		var(--ipl-paper);
+	border-color: rgba(20, 83, 45, 0.18);
+}
+
+.ipl-stat__label {
+	margin: 0;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-stat__value {
+	margin: 6px 0 4px;
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+}
+
+.ipl-stat--hero .ipl-stat__value {
+	font-size: clamp(28px, 1.5rem + 1vw, 36px);
+}
+
+.ipl-stat__meta {
+	margin: 0;
+	font-size: 12px;
+	color: var(--ipl-ink-soft);
+}
+
+/* ---------- Search ---------- */
+
+.ipl-search {
+	margin: 0 0 12px;
+}
+
+.ipl-search__main {
+	position: relative;
+	display: flex;
+	gap: 8px;
+}
+
+.ipl-search__main .dashicons {
+	position: absolute;
+	left: 14px;
+	top: 22px; /* Half the 44px input, so it stays put when the button wraps below. */
+	transform: translateY(-50%);
+	color: var(--ipl-ink-faint);
+	pointer-events: none;
+}
+
+.ipl .ipl-search__main input[type="search"] {
+	flex: 1;
+	min-height: 44px;
+	padding: 0 14px 0 42px;
+	font-size: 15px;
+	border: 1px solid var(--ipl-rule-strong);
+	border-radius: var(--ipl-radius);
+	background: var(--ipl-surface);
+	box-shadow: var(--ipl-shadow);
+	transition: border-color 150ms var(--ipl-ease), box-shadow 150ms var(--ipl-ease);
+}
+
+.ipl .ipl-search__main input[type="search"]:focus {
+	border-color: var(--ipl-accent);
+	box-shadow: 0 0 0 3px rgba(20, 83, 45, 0.15);
+	outline: none;
+}
+
+.ipl .ipl-search__main .button {
+	min-height: 44px;
+	padding: 0 18px;
+	border-radius: var(--ipl-radius);
+}
+
+.ipl-search__more {
+	margin-top: 8px;
+}
+
+.ipl-search__more summary {
+	cursor: pointer;
+	width: max-content;
+	font-size: 13px;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-search__more summary:hover,
+.ipl-search__more summary:focus-visible {
+	color: var(--ipl-ink);
+}
+
+.ipl-search__dates,
+.ipl-range__custom {
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.ipl-search__dates label,
+.ipl-range__custom label {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 12px;
+	color: var(--ipl-ink-soft);
+}
+
+/* ---------- Table ---------- */
+
+.ipl-table-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin: 16px 0 4px;
+}
+
+.ipl-table-bar .subsubsub {
+	margin: 0;
+	float: none;
+}
+
+.ipl-table .wp-list-table {
+	border-color: var(--ipl-rule);
+	border-radius: var(--ipl-radius);
+	overflow: hidden;
+	box-shadow: var(--ipl-shadow);
+}
+
+.ipl-table .wp-list-table td {
+	vertical-align: top;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.ipl-table .wp-list-table td strong,
+.ipl-table .wp-list-table td .ipl-muted,
+.ipl-table .wp-list-table td .ipl-imei {
+	display: block;
+}
+
+.ipl-table .wp-list-table td .ipl-muted {
+	margin-top: 2px;
+	font-size: 12px;
+}
+
+.ipl-table .column-imei {
+	width: 22%;
+}
+
+.ipl-table .column-status {
+	width: 9%;
+}
+
+.ipl-table .column-profit {
+	width: 10%;
+	text-align: right;
+}
+
+.ipl-table td.column-profit {
+	font-family: var(--ipl-font-mono);
+}
+
+/* ---------- Badges ---------- */
+
+.ipl-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 9px 2px 8px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	border-radius: 999px;
+	white-space: nowrap;
+}
+
+.ipl-badge::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+.ipl-badge--in_stock {
+	color: var(--ipl-stock);
+	background: var(--ipl-stock-soft);
+}
+
+.ipl-badge--sold {
+	color: var(--ipl-ink-soft);
+	background: #f5f5f4;
+}
+
+/* ---------- Cards and forms ---------- */
+
+.ipl-card {
+	margin: 0 0 16px;
+	padding: 20px 22px 22px;
+	background: var(--ipl-surface);
+	border: 1px solid var(--ipl-rule);
+	border-radius: var(--ipl-radius-lg);
+	box-shadow: var(--ipl-shadow);
+}
+
+.ipl-card--flush {
+	padding-bottom: 8px;
+}
+
+.ipl .ipl-card__title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 16px;
+	font-size: 15px;
+	font-weight: 650;
+	color: var(--ipl-ink);
+}
+
+.ipl-card__lead {
+	margin: -8px 0 16px;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-card__footer {
+	margin: 16px 0 0;
+	padding-top: 12px;
+	border-top: 1px solid var(--ipl-rule);
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-step {
+	display: inline-grid;
+	place-items: center;
+	width: 22px;
+	height: 22px;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--ipl-paper);
+	background: var(--ipl-ink);
+	border-radius: 50%;
+}
+
+.ipl-count {
+	padding: 1px 8px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--ipl-ink-soft);
+	background: #f5f5f4;
+	border-radius: 999px;
+}
+
+.ipl-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px 20px;
+}
+
+.ipl-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+}
+
+.ipl-field--wide {
+	grid-column: 1 / -1;
+}
+
+.ipl-field label {
+	font-weight: 600;
+	color: var(--ipl-ink);
+}
+
+.ipl-required {
+	color: var(--ipl-loss);
+}
+
+.ipl .ipl-field input,
+.ipl .ipl-field select,
+.ipl .ipl-field textarea {
+	width: 100%;
+	max-width: none;
+	min-height: 40px;
+	padding: 6px 12px;
+	font-size: 14px;
+	color: var(--ipl-ink);
+	background: var(--ipl-surface);
+	border: 1px solid var(--ipl-rule-strong);
+	border-radius: var(--ipl-radius-sm);
+	box-shadow: inset 0 1px 1px rgba(28, 25, 23, 0.04);
+	transition: border-color 150ms var(--ipl-ease), box-shadow 150ms var(--ipl-ease);
+}
+
+.ipl .ipl-field input:hover,
+.ipl .ipl-field select:hover,
+.ipl .ipl-field textarea:hover {
+	border-color: var(--ipl-ink-faint);
+}
+
+.ipl .ipl-field input:focus,
+.ipl .ipl-field select:focus,
+.ipl .ipl-field textarea:focus {
+	border-color: var(--ipl-accent);
+	box-shadow: 0 0 0 3px rgba(20, 83, 45, 0.15);
+	outline: none;
+}
+
+.ipl .ipl-field input.ipl-mono {
+	font-size: 15px;
+	letter-spacing: 0.03em;
+}
+
+.ipl .ipl-field--error input,
+.ipl .ipl-field--error select,
+.ipl .ipl-field--error textarea {
+	border-color: var(--ipl-loss);
+	background: var(--ipl-loss-soft);
+}
+
+.ipl-hint,
+.ipl-error {
+	margin: 0;
+	font-size: 12px;
+	line-height: 1.45;
+}
+
+.ipl-hint {
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-error {
+	color: var(--ipl-loss);
+	font-weight: 500;
+}
+
+.ipl-actions {
+	display: flex;
+	gap: 12px;
+	padding: 4px 0 24px;
+}
+
+.ipl .ipl-actions .button-hero {
+	border-radius: var(--ipl-radius);
+}
+
+/* ---------- Live IMEI status ---------- */
+
+.ipl-imei-status:empty {
+	display: none;
+}
+
+.ipl-imei-status {
+	margin-top: 8px;
+	padding: 8px 10px;
+	font-size: 12px;
+	line-height: 1.45;
+	border-radius: var(--ipl-radius-sm);
+	border: 1px solid var(--ipl-rule);
+	background: var(--ipl-paper);
+	color: var(--ipl-ink-soft);
+	animation: ipl-rise 200ms var(--ipl-ease);
+}
+
+.ipl-imei-status p {
+	margin: 0;
+}
+
+.ipl-imei-status__message {
+	font-weight: 600;
+}
+
+.ipl-imei-status__match {
+	margin-top: 4px !important;
+}
+
+.ipl-imei-status[data-state="clear"] {
+	color: var(--ipl-gain);
+	background: var(--ipl-accent-soft);
+	border-color: rgba(21, 128, 61, 0.25);
+}
+
+.ipl-imei-status[data-state="warn"] {
+	color: var(--ipl-warn);
+	background: var(--ipl-warn-soft);
+	border-color: var(--ipl-warn-rule);
+}
+
+.ipl-imei-status[data-state="block"],
+.ipl-imei-status[data-state="invalid"] {
+	color: var(--ipl-loss);
+	background: var(--ipl-loss-soft);
+	border-color: rgba(185, 28, 28, 0.25);
+}
+
+/* ---------- Duplicate notice ---------- */
+
+.ipl-duplicate {
+	margin: 0 0 16px;
+	padding: 16px 18px;
+	border-radius: var(--ipl-radius-lg);
+	border: 1px solid;
+	border-left-width: 4px;
+}
+
+.ipl-duplicate--warn {
+	color: var(--ipl-warn);
+	background: var(--ipl-warn-soft);
+	border-color: var(--ipl-warn-rule);
+}
+
+.ipl-duplicate--block {
+	color: var(--ipl-loss);
+	background: var(--ipl-loss-soft);
+	border-color: rgba(185, 28, 28, 0.35);
+}
+
+.ipl-duplicate__title {
+	margin: 0 0 8px;
+	font-size: 14px;
+	font-weight: 650;
+}
+
+.ipl-duplicate__list {
+	margin: 0 0 12px;
+	color: var(--ipl-ink);
+}
+
+.ipl-duplicate__confirm {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	padding: 10px 12px;
+	font-weight: 600;
+	color: var(--ipl-ink);
+	background: var(--ipl-surface);
+	border-radius: var(--ipl-radius-sm);
+}
+
+.ipl-duplicate__confirm input {
+	margin-top: 2px !important;
+}
+
+/* ---------- Device summary (view / sell) ---------- */
+
+.ipl-device {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	flex-wrap: wrap;
+	margin: 0 0 16px;
+	padding: 20px 22px;
+	background:
+		repeating-linear-gradient(0deg, transparent 0 27px, rgba(28, 25, 23, 0.035) 27px 28px),
+		var(--ipl-paper);
+	border: 1px solid var(--ipl-rule);
+	border-radius: var(--ipl-radius-lg);
+	box-shadow: var(--ipl-shadow-raised);
+}
+
+.ipl-device__name {
+	margin: 0 0 4px;
+	font-size: 16px;
+	font-weight: 650;
+}
+
+.ipl-device__status {
+	margin: 0 0 8px;
+}
+
+.ipl .ipl-device__imei {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.ipl-device__neir {
+	margin: 10px 0 0;
+	font-size: 12px;
+}
+
+.ipl-device__facts {
+	display: flex;
+	gap: 28px;
+	margin: 0;
+}
+
+.ipl-device__facts dt {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-device__facts dd {
+	margin: 4px 0 0;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.ipl-columns {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.ipl-details {
+	margin: 0;
+}
+
+.ipl-details > div {
+	display: grid;
+	grid-template-columns: 130px minmax(0, 1fr);
+	gap: 12px;
+	padding: 9px 0;
+	border-top: 1px solid var(--ipl-rule);
+}
+
+.ipl-details > div:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.ipl-details dt {
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-details dd {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.ipl-empty {
+	margin: 0 0 14px;
+	color: var(--ipl-ink-soft);
+}
+
+.ipl-history {
+	margin: 0;
+}
+
+.ipl-history li {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 8px 0;
+	margin: 0;
+	border-top: 1px solid var(--ipl-rule);
+}
+
+.ipl-history li:first-child {
+	border-top: 0;
+}
+
+.ipl-danger-zone {
+	margin: 8px 0 24px;
+}
+
+.ipl .ipl-link-danger {
+	color: var(--ipl-loss);
+}
+
+.ipl .ipl-link-danger:hover,
+.ipl .ipl-link-danger:focus {
+	color: #7f1d1d;
+}
+
+.ipl-profit-preview {
+	min-height: 18px;
+	margin: 8px 0 0;
+	font-family: var(--ipl-font-mono);
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.ipl-profit-preview[data-state="gain"] {
+	color: var(--ipl-gain);
+}
+
+.ipl-profit-preview[data-state="loss"] {
+	color: var(--ipl-loss);
+}
+
+/* ---------- Reports ---------- */
+
+.ipl-range {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin: 0 0 20px;
+}
+
+.ipl-range__presets {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.ipl-range__custom {
+	margin-top: 0;
+}
+
+.ipl .ipl-chip {
+	padding: 6px 12px;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--ipl-ink-soft);
+	text-decoration: none;
+	background: var(--ipl-surface);
+	border: 1px solid var(--ipl-rule);
+	border-radius: 999px;
+	transition: background-color 150ms var(--ipl-ease), color 150ms var(--ipl-ease), border-color 150ms var(--ipl-ease);
+}
+
+.ipl .ipl-chip:hover {
+	color: var(--ipl-ink);
+	border-color: var(--ipl-ink-faint);
+}
+
+.ipl .ipl-chip:focus-visible {
+	outline: 2px solid var(--ipl-accent);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.ipl .ipl-chip.is-active {
+	color: var(--ipl-paper);
+	background: var(--ipl-ink);
+	border-color: var(--ipl-ink);
+}
+
+.ipl-scroll {
+	overflow-x: auto;
+	margin: 0 -22px;
+}
+
+.ipl-report-table {
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+.ipl-report-table th:first-child,
+.ipl-report-table td:first-child {
+	padding-left: 22px;
+}
+
+.ipl-report-table th:last-child,
+.ipl-report-table td:last-child {
+	padding-right: 22px;
+}
+
+.ipl .ipl-num {
+	text-align: right;
+	white-space: nowrap;
+}
+
+.ipl th.ipl-num {
+	font-family: inherit;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes ipl-rise {
+	from {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ipl *,
+	.ipl *::before {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 960px) {
+	.ipl-stats {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.ipl-stat--hero {
+		grid-column: 1 / -1;
+	}
+
+	.ipl-columns {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 782px) {
+	.ipl-grid,
+	.ipl-stats {
+		grid-template-columns: 1fr;
+	}
+
+	.ipl-search__main {
+		flex-wrap: wrap;
+	}
+
+	.ipl .ipl-search__main .button {
+		width: 100%;
+	}
+
+	.ipl-device__facts {
+		flex-wrap: wrap;
+		gap: 16px 24px;
+	}
+
+	.ipl-details > div {
+		grid-template-columns: 1fr;
+		gap: 2px;
+	}
+
+	.ipl-table .wp-list-table td.column-profit {
+		text-align: left;
+	}
+}
