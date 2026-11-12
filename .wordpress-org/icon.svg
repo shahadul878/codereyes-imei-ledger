@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Codereyes IMEI Ledger</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a6b3c"/>
+      <stop offset="0.55" stop-color="#14532d"/>
+      <stop offset="1" stop-color="#0b331c"/>
+    </linearGradient>
+    <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#04170c" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <!-- account-book margin rules -->
+  <rect x="34" y="0" width="2.5" height="256" fill="#f87171" opacity="0.35"/>
+  <rect x="40" y="0" width="2.5" height="256" fill="#f87171" opacity="0.35"/>
+  <!-- phone -->
+  <g filter="url(#lift)">
+    <rect x="68" y="34" width="112" height="188" rx="22" fill="#fbfaf7"/>
+  </g>
+  <rect x="108" y="46" width="32" height="6" rx="3" fill="#d6d3d1"/>
+  <!-- IMEI barcode -->
+  <g fill="#1c1917">
+    <rect x="84.0" y="70" width="3.1" height="38" rx="0.6"/>
+    <rect x="88.7" y="70" width="1.6" height="38" rx="0.6"/>
+    <rect x="91.8" y="70" width="1.6" height="38" rx="0.6"/>
+    <rect x="95.0" y="70" width="3.1" height="38" rx="0.6"/>
+    <rect x="99.7" y="70" width="4.7" height="38" rx="0.6"/>
+    <rect x="107.5" y="70" width="3.1" height="38" rx="0.6"/>
+    <rect x="113.8" y="70" width="4.7" height="38" rx="0.6"/>
+    <rect x="120.1" y="70" width="1.6" height="38" rx="0.6"/>
+    <rect x="124.8" y="70" width="1.6" height="38" rx="0.6"/>
+    <rect x="129.5" y="70" width="4.7" height="38" rx="0.6"/>
+    <rect x="137.3" y="70" width="1.6" height="38" rx="0.6"/>
+    <rect x="142.0" y="70" width="3.1" height="38" rx="0.6"/>
+    <rect x="146.7" y="70" width="4.7" height="38" rx="0.6"/>
+    <rect x="154.6" y="70" width="3.1" height="38" rx="0.6"/>
+    <rect x="159.3" y="70" width="4.7" height="38" rx="0.6"/>
+  </g>
+  <!-- ledger rows: entry + amount -->
+  <g stroke-linecap="round">
+    <line x1="84" y1="128" x2="164" y2="128" stroke="#e7e5e4" stroke-width="2"/>
+    <line x1="84" y1="152" x2="164" y2="152" stroke="#e7e5e4" stroke-width="2"/>
+    <line x1="84" y1="176" x2="164" y2="176" stroke="#e7e5e4" stroke-width="2"/>
+    <line x1="86" y1="120" x2="126" y2="120" stroke="#57534e" stroke-width="6"/>
+    <line x1="146" y1="120" x2="162" y2="120" stroke="#15803d" stroke-width="6"/>
+    <line x1="86" y1="144" x2="116" y2="144" stroke="#57534e" stroke-width="6"/>
+    <line x1="142" y1="144" x2="162" y2="144" stroke="#15803d" stroke-width="6"/>
+    <line x1="86" y1="168" x2="110" y2="168" stroke="#a8a29e" stroke-width="6"/>
+  </g>
+  <!-- verified badge -->
+  <circle cx="180" cy="190" r="38" fill="#fcd34d" stroke="#14532d" stroke-width="7"/>
+  <path d="M162 191 l12 12 l24 -26" fill="none" stroke="#14532d" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

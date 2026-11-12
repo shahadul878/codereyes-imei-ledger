@@ -35,8 +35,11 @@ views/                              Templates (all output escaped)
 assets/                             admin.css, admin.js (no build step)
 tests/unit/                         PHPUnit tests for the pure rules
 docs/                               User guide and screenshots
-.wordpress-org/                     WordPress.org screenshots (SVN assets/)
+docs/brand/                         Icon and banner sources (icon.svg, banner.html, render.sh)
+.wordpress-org/                     WordPress.org icon, banner and screenshots (SVN assets/)
 ```
+
+To change the icon or banner, edit the files in `docs/brand/` and run `docs/brand/render.sh`. It uses headless Chrome and the Inter, JetBrains Mono and Noto Sans Bengali fonts to rewrite `icon-128x128.png`, `icon-256x256.png`, `icon.svg`, `banner-772x250.png` and `banner-1544x500.png` in `.wordpress-org/`.
 
 Business rules live in the pure classes so they can be tested without WordPress or a database. The repository is the only class that talks to `$wpdb`; admin classes only read requests and render views.
 
