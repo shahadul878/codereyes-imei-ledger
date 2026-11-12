@@ -2,7 +2,7 @@
 /**
  * Decides what an IMEI match means for a new purchase.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

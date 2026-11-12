@@ -2,7 +2,7 @@
 /**
  * Handlers for admin-post.php: save purchase, save sale, cancel sale, delete, export.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -216,7 +216,7 @@ final class Imei_Ledger_Actions {
 	 */
 	private function authorize( string $nonce_action ): void {
 		if ( ! current_user_can( Imei_Ledger_Installer::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to manage the IMEI ledger.', 'imei-phone-ledger' ), 403 );
+			wp_die( esc_html__( 'You do not have permission to manage the IMEI ledger.', 'codereyes-imei-ledger' ), 403 );
 		}
 
 		check_admin_referer( $nonce_action );
@@ -252,7 +252,7 @@ final class Imei_Ledger_Actions {
 			return array();
 		}
 
-		return array( 'purchase_date' => __( 'The purchase date cannot be after the sale date.', 'imei-phone-ledger' ) );
+		return array( 'purchase_date' => __( 'The purchase date cannot be after the sale date.', 'codereyes-imei-ledger' ) );
 	}
 
 	/**
@@ -373,7 +373,7 @@ final class Imei_Ledger_Actions {
 	 */
 	private function fail( RuntimeException $e, string $url ): void {
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Server-side record of a failed write.
-		error_log( 'IMEI Phone Ledger: ' . $e->getMessage() );
+		error_log( 'Codereyes IMEI Ledger: ' . $e->getMessage() );
 
 		$this->redirect( Imei_Ledger_Notices::add_to_url( $url, 'db_error' ) );
 	}

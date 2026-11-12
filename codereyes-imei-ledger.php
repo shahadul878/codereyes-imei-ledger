@@ -1,22 +1,22 @@
 <?php
 /**
- * Plugin Name:       IMEI Phone Ledger
- * Description:       Keep a purchase and sale ledger for second-hand mobile phones, tracked by IMEI. Search by IMEI, record sellers and buyers, catch duplicate IMEIs, see profit and export CSV reports.
- * Version:           1.0.0
+ * Plugin Name:       Codereyes IMEI Ledger for Mobile Shops
+ * Description:       Buy and sell ledger for second-hand mobile phone shops, tracked by IMEI. Search by IMEI, record sellers and buyers, catch duplicate IMEIs, see profit and export CSV reports.
+ * Version:           1.0.1
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            H M Shahadul Islam
  * Author URI:        https://github.com/shahadul878
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       imei-phone-ledger
+ * Text Domain:       codereyes-imei-ledger
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'IMEI_LEDGER_VERSION', '1.0.0' );
+define( 'IMEI_LEDGER_VERSION', '1.0.1' );
 define( 'IMEI_LEDGER_FILE', __FILE__ );
 define( 'IMEI_LEDGER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IMEI_LEDGER_URL', plugin_dir_url( __FILE__ ) );

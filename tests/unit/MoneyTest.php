@@ -2,7 +2,7 @@
 /**
  * Tests for money parsing and formatting.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

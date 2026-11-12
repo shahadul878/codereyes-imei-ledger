@@ -2,7 +2,7 @@
 /**
  * Creates the records table and grants the capability.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

@@ -2,7 +2,7 @@
 /**
  * IMEI normalisation and validation.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

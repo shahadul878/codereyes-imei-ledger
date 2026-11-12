@@ -1,4 +1,4 @@
-# IMEI Phone Ledger — প্লাগিন পরিকল্পনা
+# Codereyes IMEI Ledger — প্লাগিন পরিকল্পনা
 
 > একটা WordPress প্লাগিন, যেটা সেকেন্ড হ্যান্ড মোবাইল দোকানের প্রতিটা ফোন **IMEI নম্বর দিয়ে** ট্র্যাক করে: কার কাছ থেকে কত দামে কেনা হলো, কার কাছে কত দামে বিক্রি হলো, আর তাতে লাভ বা লোকসান কত।
 
@@ -110,8 +110,8 @@
 ## ৮. কোডের গঠন
 
 ```
-imei-phone-ledger/
-├── imei-phone-ledger.php            # বুটস্ট্র্যাপ, হুক, activation
+codereyes-imei-ledger/
+├── codereyes-imei-ledger.php            # বুটস্ট্র্যাপ, হুক, activation
 ├── uninstall.php                    # ডিফল্টে ডাটা রেখে দেয় (§১০)
 ├── includes/
 │   ├── class-imei-ledger-digits.php      # বাংলা সংখ্যা → ইংরেজি
@@ -172,7 +172,7 @@ imei-phone-ledger/
 
 ## ১৩. যে সিদ্ধান্তগুলো আপনার নিতে হবে (আমার প্রস্তাবিত ডিফল্টসহ)
 
-1. **প্লাগিনের নাম:** "IMEI Phone Ledger" (slug `imei-phone-ledger`)। অন্য নাম চাইলে বলুন।
+1. **প্লাগিনের নাম:** "Codereyes IMEI Ledger" (slug `codereyes-imei-ledger`)। অন্য নাম চাইলে বলুন।
 2. **অ্যাডমিনের ভাষা:** ইংরেজিতে লেখা হবে, তবে সব লেখা অনুবাদযোগ্য থাকবে। প্রস্তাব: v1-এর সাথেই একটা **বাংলা (bn_BD) অনুবাদ** দিয়ে দেওয়া।
 3. **কে ব্যবহার করতে পারবেন:** Administrator আর Shop Manager। দোকানের কর্মচারীদের জন্য আলাদা "Ledger Staff" রোল দরকার কিনা?
 4. **WooCommerce:** v1 পুরোপুরি আলাদা চলবে, WooCommerce লাগবে না।

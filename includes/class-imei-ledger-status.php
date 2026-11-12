@@ -2,7 +2,7 @@
 /**
  * Record status values.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);
@@ -25,8 +25,8 @@ final class Imei_Ledger_Status {
 	 */
 	public static function labels(): array {
 		return array(
-			self::IN_STOCK => __( 'In stock', 'imei-phone-ledger' ),
-			self::SOLD     => __( 'Sold', 'imei-phone-ledger' ),
+			self::IN_STOCK => __( 'In stock', 'codereyes-imei-ledger' ),
+			self::SOLD     => __( 'Sold', 'codereyes-imei-ledger' ),
 		);
 	}
 }

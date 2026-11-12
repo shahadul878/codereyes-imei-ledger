@@ -2,7 +2,7 @@
 /**
  * Reports screen.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  *
  * @var array $vars {
  *     @type string  $from      Y-m-d.
@@ -22,17 +22,17 @@ $imei_ledger_period = sprintf( '%s – %s', Imei_Ledger_View::date( $vars['from'
 <div class="wrap ipl">
 	<header class="ipl-header">
 		<div>
-			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'imei-phone-ledger' ); ?></p>
-			<h1 class="ipl-title"><?php esc_html_e( 'Reports', 'imei-phone-ledger' ); ?></h1>
+			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'codereyes-imei-ledger' ); ?></p>
+			<h1 class="ipl-title"><?php esc_html_e( 'Reports', 'codereyes-imei-ledger' ); ?></h1>
 		</div>
 		<div class="ipl-header__actions">
 			<a class="button" href="<?php echo esc_url( $vars['exports']['purchases'] ); ?>">
 				<span class="dashicons dashicons-download" aria-hidden="true"></span>
-				<?php esc_html_e( 'Purchases CSV', 'imei-phone-ledger' ); ?>
+				<?php esc_html_e( 'Purchases CSV', 'codereyes-imei-ledger' ); ?>
 			</a>
 			<a class="button button-primary" href="<?php echo esc_url( $vars['exports']['sales'] ); ?>">
 				<span class="dashicons dashicons-download" aria-hidden="true"></span>
-				<?php esc_html_e( 'Sales CSV', 'imei-phone-ledger' ); ?>
+				<?php esc_html_e( 'Sales CSV', 'codereyes-imei-ledger' ); ?>
 			</a>
 		</div>
 	</header>
@@ -40,7 +40,7 @@ $imei_ledger_period = sprintf( '%s – %s', Imei_Ledger_View::date( $vars['from'
 
 	<form class="ipl-range" method="get" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
 		<input type="hidden" name="page" value="<?php echo esc_attr( Imei_Ledger_View::PAGE_REPORTS ); ?>">
-		<nav class="ipl-range__presets" aria-label="<?php esc_attr_e( 'Quick ranges', 'imei-phone-ledger' ); ?>">
+		<nav class="ipl-range__presets" aria-label="<?php esc_attr_e( 'Quick ranges', 'codereyes-imei-ledger' ); ?>">
 			<?php
 			// Early in a month several presets cover the same dates; highlight only the last
 			// match, so the default range shows as "This month" rather than "Last 7 days".
@@ -65,9 +65,9 @@ $imei_ledger_period = sprintf( '%s – %s', Imei_Ledger_View::date( $vars['from'
 			<?php endforeach; ?>
 		</nav>
 		<div class="ipl-range__custom">
-			<label><span><?php esc_html_e( 'From', 'imei-phone-ledger' ); ?></span> <input type="date" name="from" value="<?php echo esc_attr( $vars['from'] ); ?>"></label>
-			<label><span><?php esc_html_e( 'To', 'imei-phone-ledger' ); ?></span> <input type="date" name="to" value="<?php echo esc_attr( $vars['to'] ); ?>"></label>
-			<button type="submit" class="button"><?php esc_html_e( 'Show', 'imei-phone-ledger' ); ?></button>
+			<label><span><?php esc_html_e( 'From', 'codereyes-imei-ledger' ); ?></span> <input type="date" name="from" value="<?php echo esc_attr( $vars['from'] ); ?>"></label>
+			<label><span><?php esc_html_e( 'To', 'codereyes-imei-ledger' ); ?></span> <input type="date" name="to" value="<?php echo esc_attr( $vars['to'] ); ?>"></label>
+			<button type="submit" class="button"><?php esc_html_e( 'Show', 'codereyes-imei-ledger' ); ?></button>
 		</div>
 	</form>
 
@@ -83,24 +83,24 @@ $imei_ledger_period = sprintf( '%s – %s', Imei_Ledger_View::date( $vars['from'
 
 	<section class="ipl-card ipl-card--flush">
 		<h2 class="ipl-card__title">
-			<?php esc_html_e( 'Sales in this period', 'imei-phone-ledger' ); ?>
+			<?php esc_html_e( 'Sales in this period', 'codereyes-imei-ledger' ); ?>
 			<span class="ipl-count"><?php echo esc_html( number_format_i18n( $vars['sales_all'] ) ); ?></span>
 		</h2>
 
 		<?php if ( array() === $vars['sales'] ) : ?>
-			<p class="ipl-empty"><?php esc_html_e( 'No phones were sold in this period.', 'imei-phone-ledger' ); ?></p>
+			<p class="ipl-empty"><?php esc_html_e( 'No phones were sold in this period.', 'codereyes-imei-ledger' ); ?></p>
 		<?php else : ?>
 			<div class="ipl-scroll">
 				<table class="widefat striped ipl-report-table">
 					<thead>
 						<tr>
-							<th scope="col"><?php esc_html_e( 'Sold on', 'imei-phone-ledger' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'Phone', 'imei-phone-ledger' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'IMEI', 'imei-phone-ledger' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'Buyer', 'imei-phone-ledger' ); ?></th>
-							<th scope="col" class="ipl-num"><?php esc_html_e( 'Bought for', 'imei-phone-ledger' ); ?></th>
-							<th scope="col" class="ipl-num"><?php esc_html_e( 'Sold for', 'imei-phone-ledger' ); ?></th>
-							<th scope="col" class="ipl-num"><?php esc_html_e( 'Profit', 'imei-phone-ledger' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Sold on', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Phone', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'IMEI', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Buyer', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col" class="ipl-num"><?php esc_html_e( 'Bought for', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col" class="ipl-num"><?php esc_html_e( 'Sold for', 'codereyes-imei-ledger' ); ?></th>
+							<th scope="col" class="ipl-num"><?php esc_html_e( 'Profit', 'codereyes-imei-ledger' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -122,7 +122,7 @@ $imei_ledger_period = sprintf( '%s – %s', Imei_Ledger_View::date( $vars['from'
 				<p class="ipl-card__footer">
 					<?php
 					/* translators: %d: number of sales shown. */
-					echo esc_html( sprintf( __( 'Showing the latest %d sales. Download the Sales CSV for all of them.', 'imei-phone-ledger' ), count( $vars['sales'] ) ) );
+					echo esc_html( sprintf( __( 'Showing the latest %d sales. Download the Sales CSV for all of them.', 'codereyes-imei-ledger' ), count( $vars['sales'] ) ) );
 					?>
 				</p>
 			<?php endif; ?>

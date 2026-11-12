@@ -5,7 +5,7 @@
  * phpcs:disable WordPress.DB.DirectDatabaseQuery -- Custom table; nothing to cache across requests.
  * phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders -- WHERE and ORDER BY come from Imei_Ledger_Query (whitelisted columns, placeholder values).
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

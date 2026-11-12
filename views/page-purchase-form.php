@@ -2,7 +2,7 @@
 /**
  * Add / edit purchase screen.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  *
  * @var array $vars {
  *     @type array|null $record Record being edited, or null.
@@ -42,13 +42,13 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 <div class="wrap ipl">
 	<header class="ipl-header">
 		<div>
-			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'imei-phone-ledger' ); ?></p>
+			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'codereyes-imei-ledger' ); ?></p>
 			<h1 class="ipl-title">
-				<?php echo $imei_ledger_is_new ? esc_html__( 'Add purchase', 'imei-phone-ledger' ) : esc_html__( 'Edit purchase', 'imei-phone-ledger' ); ?>
+				<?php echo $imei_ledger_is_new ? esc_html__( 'Add purchase', 'codereyes-imei-ledger' ) : esc_html__( 'Edit purchase', 'codereyes-imei-ledger' ); ?>
 			</h1>
 		</div>
 		<a class="button" href="<?php echo esc_url( $imei_ledger_is_new ? Imei_Ledger_View::page_url( Imei_Ledger_View::PAGE_LIST ) : Imei_Ledger_View::record_url( 'view', $imei_ledger_id ) ); ?>">
-			<?php esc_html_e( 'Back', 'imei-phone-ledger' ); ?>
+			<?php esc_html_e( 'Back', 'codereyes-imei-ledger' ); ?>
 		</a>
 	</header>
 	<hr class="wp-header-end">
@@ -56,7 +56,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 	<?php Imei_Ledger_Notices::render(); ?>
 
 	<?php if ( array() !== $imei_ledger_errors ) : ?>
-		<div class="notice notice-error"><p><?php esc_html_e( 'Please fix the highlighted fields.', 'imei-phone-ledger' ); ?></p></div>
+		<div class="notice notice-error"><p><?php esc_html_e( 'Please fix the highlighted fields.', 'codereyes-imei-ledger' ); ?></p></div>
 	<?php endif; ?>
 
 	<form class="ipl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
@@ -75,16 +75,16 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 		?>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">1</span><?php esc_html_e( 'Phone', 'imei-phone-ledger' ); ?></h2>
+			<h2 class="ipl-card__title"><span class="ipl-step">1</span><?php esc_html_e( 'Phone', 'codereyes-imei-ledger' ); ?></h2>
 			<div class="ipl-grid">
 				<div class="ipl-imei-field">
 					<?php
 					$imei_ledger_field(
 						'imei1',
-						__( 'IMEI 1', 'imei-phone-ledger' ),
+						__( 'IMEI 1', 'codereyes-imei-ledger' ),
 						array(
 							'required' => true,
-							'hint'     => __( 'Dial *#06# on the phone to see its IMEI.', 'imei-phone-ledger' ),
+							'hint'     => __( 'Dial *#06# on the phone to see its IMEI.', 'codereyes-imei-ledger' ),
 							'attrs'    => array(
 								'inputmode'          => 'numeric',
 								'autocomplete'       => 'off',
@@ -103,9 +103,9 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 					<?php
 					$imei_ledger_field(
 						'imei2',
-						__( 'IMEI 2', 'imei-phone-ledger' ),
+						__( 'IMEI 2', 'codereyes-imei-ledger' ),
 						array(
-							'hint'  => __( 'Only for dual-SIM phones.', 'imei-phone-ledger' ),
+							'hint'  => __( 'Only for dual-SIM phones.', 'codereyes-imei-ledger' ),
 							'attrs' => array(
 								'inputmode'          => 'numeric',
 								'autocomplete'       => 'off',
@@ -123,7 +123,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				<?php
 				$imei_ledger_field(
 					'brand',
-					__( 'Brand', 'imei-phone-ledger' ),
+					__( 'Brand', 'codereyes-imei-ledger' ),
 					array(
 						'required' => true,
 						'attrs'    => array(
@@ -134,29 +134,29 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				);
 				$imei_ledger_field(
 					'model',
-					__( 'Model', 'imei-phone-ledger' ),
+					__( 'Model', 'codereyes-imei-ledger' ),
 					array(
 						'required' => true,
 						'attrs'    => array(
 							'maxlength'   => '100',
-							'placeholder' => __( 'e.g. Galaxy A52', 'imei-phone-ledger' ),
+							'placeholder' => __( 'e.g. Galaxy A52', 'codereyes-imei-ledger' ),
 						),
 					)
 				);
 				$imei_ledger_field(
 					'storage',
-					__( 'RAM / Storage', 'imei-phone-ledger' ),
+					__( 'RAM / Storage', 'codereyes-imei-ledger' ),
 					array(
 						'attrs' => array(
 							'maxlength'   => '50',
-							'placeholder' => __( 'e.g. 8/128GB', 'imei-phone-ledger' ),
+							'placeholder' => __( 'e.g. 8/128GB', 'codereyes-imei-ledger' ),
 						),
 					)
 				);
-				$imei_ledger_field( 'color', __( 'Color', 'imei-phone-ledger' ), array( 'attrs' => array( 'maxlength' => '50' ) ) );
+				$imei_ledger_field( 'color', __( 'Color', 'codereyes-imei-ledger' ), array( 'attrs' => array( 'maxlength' => '50' ) ) );
 				$imei_ledger_field(
 					'device_condition',
-					__( 'Condition', 'imei-phone-ledger' ),
+					__( 'Condition', 'codereyes-imei-ledger' ),
 					array(
 						'type'     => 'select',
 						'required' => true,
@@ -173,12 +173,12 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 		</section>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">2</span><?php esc_html_e( 'Purchase', 'imei-phone-ledger' ); ?></h2>
+			<h2 class="ipl-card__title"><span class="ipl-step">2</span><?php esc_html_e( 'Purchase', 'codereyes-imei-ledger' ); ?></h2>
 			<div class="ipl-grid">
 				<?php
 				$imei_ledger_field(
 					'purchase_date',
-					__( 'Purchase date', 'imei-phone-ledger' ),
+					__( 'Purchase date', 'codereyes-imei-ledger' ),
 					array(
 						'type'     => 'date',
 						'required' => true,
@@ -188,7 +188,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				$imei_ledger_field(
 					'purchase_price',
 					/* translators: %s: currency symbol. */
-					sprintf( __( 'Purchase price (%s)', 'imei-phone-ledger' ), Imei_Ledger_View::currency() ),
+					sprintf( __( 'Purchase price (%s)', 'codereyes-imei-ledger' ), Imei_Ledger_View::currency() ),
 					array(
 						'required' => true,
 						'attrs'    => array(
@@ -203,13 +203,13 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 		</section>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">3</span><?php esc_html_e( 'Seller', 'imei-phone-ledger' ); ?></h2>
-			<p class="ipl-card__lead"><?php esc_html_e( 'Who sold this phone to the shop. Keep a copy of their NID if you can.', 'imei-phone-ledger' ); ?></p>
+			<h2 class="ipl-card__title"><span class="ipl-step">3</span><?php esc_html_e( 'Seller', 'codereyes-imei-ledger' ); ?></h2>
+			<p class="ipl-card__lead"><?php esc_html_e( 'Who sold this phone to the shop. Keep a copy of their NID if you can.', 'codereyes-imei-ledger' ); ?></p>
 			<div class="ipl-grid">
 				<?php
 				$imei_ledger_field(
 					'seller_name',
-					__( 'Name', 'imei-phone-ledger' ),
+					__( 'Name', 'codereyes-imei-ledger' ),
 					array(
 						'required' => true,
 						'attrs'    => array(
@@ -220,7 +220,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				);
 				$imei_ledger_field(
 					'seller_phone',
-					__( 'Mobile number', 'imei-phone-ledger' ),
+					__( 'Mobile number', 'codereyes-imei-ledger' ),
 					array(
 						'type'     => 'tel',
 						'required' => true,
@@ -232,9 +232,9 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				);
 				$imei_ledger_field(
 					'seller_nid',
-					__( 'NID number', 'imei-phone-ledger' ),
+					__( 'NID number', 'codereyes-imei-ledger' ),
 					array(
-						'hint'  => __( '10, 13 or 17 digits.', 'imei-phone-ledger' ),
+						'hint'  => __( '10, 13 or 17 digits.', 'codereyes-imei-ledger' ),
 						'attrs' => array(
 							'inputmode'    => 'numeric',
 							'autocomplete' => 'off',
@@ -243,7 +243,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 				);
 				$imei_ledger_field(
 					'seller_address',
-					__( 'Address', 'imei-phone-ledger' ),
+					__( 'Address', 'codereyes-imei-ledger' ),
 					array(
 						'type' => 'textarea',
 						'wide' => true,
@@ -254,16 +254,16 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 		</section>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">4</span><?php esc_html_e( 'Notes', 'imei-phone-ledger' ); ?></h2>
+			<h2 class="ipl-card__title"><span class="ipl-step">4</span><?php esc_html_e( 'Notes', 'codereyes-imei-ledger' ); ?></h2>
 			<div class="ipl-grid">
 				<?php
 				$imei_ledger_field(
 					'notes',
-					__( 'Notes', 'imei-phone-ledger' ),
+					__( 'Notes', 'codereyes-imei-ledger' ),
 					array(
 						'type'  => 'textarea',
 						'wide'  => true,
-						'attrs' => array( 'placeholder' => __( 'Box, charger, scratches, battery health…', 'imei-phone-ledger' ) ),
+						'attrs' => array( 'placeholder' => __( 'Box, charger, scratches, battery health…', 'codereyes-imei-ledger' ) ),
 					)
 				);
 				?>
@@ -272,7 +272,7 @@ $imei_ledger_brands = array( 'Samsung', 'Apple', 'Xiaomi', 'Redmi', 'Realme', 'O
 
 		<div class="ipl-actions">
 			<button type="submit" class="button button-primary button-hero">
-				<?php echo $imei_ledger_is_new ? esc_html__( 'Save purchase', 'imei-phone-ledger' ) : esc_html__( 'Update purchase', 'imei-phone-ledger' ); ?>
+				<?php echo $imei_ledger_is_new ? esc_html__( 'Save purchase', 'codereyes-imei-ledger' ) : esc_html__( 'Update purchase', 'codereyes-imei-ledger' ); ?>
 			</button>
 		</div>
 	</form>

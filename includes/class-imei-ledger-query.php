@@ -5,7 +5,7 @@
  * Pure: every column name comes from a whitelist and every user value is
  * returned as a placeholder parameter for $wpdb->prepare().
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

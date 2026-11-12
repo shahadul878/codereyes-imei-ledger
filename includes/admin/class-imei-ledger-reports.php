@@ -2,7 +2,7 @@
 /**
  * Reports screen: totals and sales for a date range.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -95,11 +95,11 @@ final class Imei_Ledger_Reports {
 		$today = new DateTimeImmutable( current_time( 'Y-m-d' ) );
 
 		return array(
-			__( 'Today', 'imei-phone-ledger' )       => array( $today->format( 'Y-m-d' ), $today->format( 'Y-m-d' ) ),
-			__( 'Last 7 days', 'imei-phone-ledger' ) => array( $today->modify( '-6 days' )->format( 'Y-m-d' ), $today->format( 'Y-m-d' ) ),
-			__( 'This month', 'imei-phone-ledger' )  => array( $today->format( 'Y-m-01' ), $today->format( 'Y-m-d' ) ),
-			__( 'Last month', 'imei-phone-ledger' )  => array( $today->modify( 'first day of last month' )->format( 'Y-m-d' ), $today->modify( 'last day of last month' )->format( 'Y-m-d' ) ),
-			__( 'This year', 'imei-phone-ledger' )   => array( $today->format( 'Y-01-01' ), $today->format( 'Y-m-d' ) ),
+			__( 'Today', 'codereyes-imei-ledger' )       => array( $today->format( 'Y-m-d' ), $today->format( 'Y-m-d' ) ),
+			__( 'Last 7 days', 'codereyes-imei-ledger' ) => array( $today->modify( '-6 days' )->format( 'Y-m-d' ), $today->format( 'Y-m-d' ) ),
+			__( 'This month', 'codereyes-imei-ledger' )  => array( $today->format( 'Y-m-01' ), $today->format( 'Y-m-d' ) ),
+			__( 'Last month', 'codereyes-imei-ledger' )  => array( $today->modify( 'first day of last month' )->format( 'Y-m-d' ), $today->modify( 'last day of last month' )->format( 'Y-m-d' ) ),
+			__( 'This year', 'codereyes-imei-ledger' )   => array( $today->format( 'Y-01-01' ), $today->format( 'Y-m-d' ) ),
 		);
 	}
 

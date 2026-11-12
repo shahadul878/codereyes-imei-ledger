@@ -2,7 +2,7 @@
 /**
  * Tests for the list/report query builder.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

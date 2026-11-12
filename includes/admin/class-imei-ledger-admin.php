@@ -2,7 +2,7 @@
 /**
  * Admin menu, assets and screen routing.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -51,8 +51,8 @@ final class Imei_Ledger_Admin {
 		$capability = Imei_Ledger_Installer::CAPABILITY;
 
 		$list = add_menu_page(
-			__( 'IMEI Ledger', 'imei-phone-ledger' ),
-			__( 'IMEI Ledger', 'imei-phone-ledger' ),
+			__( 'IMEI Ledger', 'codereyes-imei-ledger' ),
+			__( 'IMEI Ledger', 'codereyes-imei-ledger' ),
 			$capability,
 			Imei_Ledger_View::PAGE_LIST,
 			array( $this, 'render_main' ),
@@ -61,9 +61,9 @@ final class Imei_Ledger_Admin {
 		);
 
 		$this->hooks[] = $list;
-		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'All Phones', 'imei-phone-ledger' ), __( 'All Phones', 'imei-phone-ledger' ), $capability, Imei_Ledger_View::PAGE_LIST, array( $this, 'render_main' ) );
-		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'Add Purchase', 'imei-phone-ledger' ), __( 'Add Purchase', 'imei-phone-ledger' ), $capability, Imei_Ledger_View::PAGE_ADD, array( $this, 'render_add' ) );
-		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'Reports', 'imei-phone-ledger' ), __( 'Reports', 'imei-phone-ledger' ), $capability, Imei_Ledger_View::PAGE_REPORTS, array( $this, 'render_reports' ) );
+		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'All Phones', 'codereyes-imei-ledger' ), __( 'All Phones', 'codereyes-imei-ledger' ), $capability, Imei_Ledger_View::PAGE_LIST, array( $this, 'render_main' ) );
+		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'Add Purchase', 'codereyes-imei-ledger' ), __( 'Add Purchase', 'codereyes-imei-ledger' ), $capability, Imei_Ledger_View::PAGE_ADD, array( $this, 'render_add' ) );
+		$this->hooks[] = add_submenu_page( Imei_Ledger_View::PAGE_LIST, __( 'Reports', 'codereyes-imei-ledger' ), __( 'Reports', 'codereyes-imei-ledger' ), $capability, Imei_Ledger_View::PAGE_REPORTS, array( $this, 'render_reports' ) );
 
 		add_action( 'load-' . $list, array( $this, 'add_screen_options' ) );
 	}
@@ -113,17 +113,17 @@ final class Imei_Ledger_Admin {
 				'nonce'    => wp_create_nonce( Imei_Ledger_Ajax::NONCE ),
 				'currency' => Imei_Ledger_View::currency(),
 				'i18n'     => array(
-					'checking'      => __( 'Checking…', 'imei-phone-ledger' ),
-					'invalid'       => __( 'Not a valid IMEI yet. Dial *#06# on the phone to see it.', 'imei-phone-ledger' ),
-					'clear'         => __( 'New IMEI. No earlier records.', 'imei-phone-ledger' ),
-					'soldBefore'    => __( 'This phone was bought and sold before. Check the earlier record before buying it again.', 'imei-phone-ledger' ),
-					'inStock'       => __( 'This phone is already in stock. You cannot add it twice.', 'imei-phone-ledger' ),
-					'viewRecord'    => __( 'View record', 'imei-phone-ledger' ),
-					'failed'        => __( 'Could not check the IMEI right now. It will be checked again when you save.', 'imei-phone-ledger' ),
-					'profit'        => __( 'Profit', 'imei-phone-ledger' ),
-					'loss'          => __( 'Loss', 'imei-phone-ledger' ),
-					'confirmDelete' => __( 'Delete this record permanently? This cannot be undone.', 'imei-phone-ledger' ),
-					'confirmCancel' => __( 'Cancel this sale and put the phone back in stock?', 'imei-phone-ledger' ),
+					'checking'      => __( 'Checking…', 'codereyes-imei-ledger' ),
+					'invalid'       => __( 'Not a valid IMEI yet. Dial *#06# on the phone to see it.', 'codereyes-imei-ledger' ),
+					'clear'         => __( 'New IMEI. No earlier records.', 'codereyes-imei-ledger' ),
+					'soldBefore'    => __( 'This phone was bought and sold before. Check the earlier record before buying it again.', 'codereyes-imei-ledger' ),
+					'inStock'       => __( 'This phone is already in stock. You cannot add it twice.', 'codereyes-imei-ledger' ),
+					'viewRecord'    => __( 'View record', 'codereyes-imei-ledger' ),
+					'failed'        => __( 'Could not check the IMEI right now. It will be checked again when you save.', 'codereyes-imei-ledger' ),
+					'profit'        => __( 'Profit', 'codereyes-imei-ledger' ),
+					'loss'          => __( 'Loss', 'codereyes-imei-ledger' ),
+					'confirmDelete' => __( 'Delete this record permanently? This cannot be undone.', 'codereyes-imei-ledger' ),
+					'confirmCancel' => __( 'Cancel this sale and put the phone back in stock?', 'codereyes-imei-ledger' ),
 				),
 			)
 		);

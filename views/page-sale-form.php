@@ -2,7 +2,7 @@
 /**
  * Sell (or correct a sale) screen.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  *
  * @var array $vars {
  *     @type array  $record Record.
@@ -39,19 +39,19 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 <div class="wrap ipl">
 	<header class="ipl-header">
 		<div>
-			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'imei-phone-ledger' ); ?></p>
+			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'codereyes-imei-ledger' ); ?></p>
 			<h1 class="ipl-title">
-				<?php echo $imei_ledger_resale ? esc_html__( 'Edit sale', 'imei-phone-ledger' ) : esc_html__( 'Sell phone', 'imei-phone-ledger' ); ?>
+				<?php echo $imei_ledger_resale ? esc_html__( 'Edit sale', 'codereyes-imei-ledger' ) : esc_html__( 'Sell phone', 'codereyes-imei-ledger' ); ?>
 			</h1>
 		</div>
-		<a class="button" href="<?php echo esc_url( Imei_Ledger_View::record_url( 'view', $imei_ledger_id ) ); ?>"><?php esc_html_e( 'Back', 'imei-phone-ledger' ); ?></a>
+		<a class="button" href="<?php echo esc_url( Imei_Ledger_View::record_url( 'view', $imei_ledger_id ) ); ?>"><?php esc_html_e( 'Back', 'codereyes-imei-ledger' ); ?></a>
 	</header>
 	<hr class="wp-header-end">
 
 	<?php Imei_Ledger_Notices::render(); ?>
 
 	<?php if ( array() !== $imei_ledger_errors ) : ?>
-		<div class="notice notice-error"><p><?php esc_html_e( 'Please fix the highlighted fields.', 'imei-phone-ledger' ); ?></p></div>
+		<div class="notice notice-error"><p><?php esc_html_e( 'Please fix the highlighted fields.', 'codereyes-imei-ledger' ); ?></p></div>
 	<?php endif; ?>
 
 	<section class="ipl-device">
@@ -61,11 +61,11 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 		</div>
 		<dl class="ipl-device__facts">
 			<div>
-				<dt><?php esc_html_e( 'Bought for', 'imei-phone-ledger' ); ?></dt>
+				<dt><?php esc_html_e( 'Bought for', 'codereyes-imei-ledger' ); ?></dt>
 				<dd class="ipl-amount"><?php echo esc_html( Imei_Ledger_View::money( $imei_ledger_record['purchase_price'] ) ); ?></dd>
 			</div>
 			<div>
-				<dt><?php esc_html_e( 'Bought on', 'imei-phone-ledger' ); ?></dt>
+				<dt><?php esc_html_e( 'Bought on', 'codereyes-imei-ledger' ); ?></dt>
 				<dd><?php echo esc_html( Imei_Ledger_View::date( $imei_ledger_record['purchase_date'] ) ); ?></dd>
 			</div>
 		</dl>
@@ -77,12 +77,12 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 		<?php wp_nonce_field( 'imei_ledger_save_sale' ); ?>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">1</span><?php esc_html_e( 'Sale', 'imei-phone-ledger' ); ?></h2>
+			<h2 class="ipl-card__title"><span class="ipl-step">1</span><?php esc_html_e( 'Sale', 'codereyes-imei-ledger' ); ?></h2>
 			<div class="ipl-grid">
 				<?php
 				$imei_ledger_field(
 					'sale_date',
-					__( 'Sale date', 'imei-phone-ledger' ),
+					__( 'Sale date', 'codereyes-imei-ledger' ),
 					array(
 						'type'     => 'date',
 						'required' => true,
@@ -98,7 +98,7 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 					$imei_ledger_field(
 						'sale_price',
 						/* translators: %s: currency symbol. */
-						sprintf( __( 'Sale price (%s)', 'imei-phone-ledger' ), Imei_Ledger_View::currency() ),
+						sprintf( __( 'Sale price (%s)', 'codereyes-imei-ledger' ), Imei_Ledger_View::currency() ),
 						array(
 							'required' => true,
 							'attrs'    => array(
@@ -116,12 +116,12 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 		</section>
 
 		<section class="ipl-card">
-			<h2 class="ipl-card__title"><span class="ipl-step">2</span><?php esc_html_e( 'Buyer', 'imei-phone-ledger' ); ?></h2>
+			<h2 class="ipl-card__title"><span class="ipl-step">2</span><?php esc_html_e( 'Buyer', 'codereyes-imei-ledger' ); ?></h2>
 			<div class="ipl-grid">
 				<?php
 				$imei_ledger_field(
 					'buyer_name',
-					__( 'Name', 'imei-phone-ledger' ),
+					__( 'Name', 'codereyes-imei-ledger' ),
 					array(
 						'required' => true,
 						'attrs'    => array(
@@ -132,7 +132,7 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 				);
 				$imei_ledger_field(
 					'buyer_phone',
-					__( 'Mobile number', 'imei-phone-ledger' ),
+					__( 'Mobile number', 'codereyes-imei-ledger' ),
 					array(
 						'type'     => 'tel',
 						'required' => true,
@@ -144,9 +144,9 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 				);
 				$imei_ledger_field(
 					'buyer_nid',
-					__( 'NID number', 'imei-phone-ledger' ),
+					__( 'NID number', 'codereyes-imei-ledger' ),
 					array(
-						'hint'  => __( '10, 13 or 17 digits.', 'imei-phone-ledger' ),
+						'hint'  => __( '10, 13 or 17 digits.', 'codereyes-imei-ledger' ),
 						'attrs' => array(
 							'inputmode'    => 'numeric',
 							'autocomplete' => 'off',
@@ -155,7 +155,7 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 				);
 				$imei_ledger_field(
 					'buyer_address',
-					__( 'Address', 'imei-phone-ledger' ),
+					__( 'Address', 'codereyes-imei-ledger' ),
 					array(
 						'type' => 'textarea',
 						'wide' => true,
@@ -167,7 +167,7 @@ $imei_ledger_field = static function ( string $name, string $label, array $extra
 
 		<div class="ipl-actions">
 			<button type="submit" class="button button-primary button-hero">
-				<?php echo $imei_ledger_resale ? esc_html__( 'Update sale', 'imei-phone-ledger' ) : esc_html__( 'Save sale', 'imei-phone-ledger' ); ?>
+				<?php echo $imei_ledger_resale ? esc_html__( 'Update sale', 'codereyes-imei-ledger' ) : esc_html__( 'Save sale', 'codereyes-imei-ledger' ); ?>
 			</button>
 		</div>
 	</form>

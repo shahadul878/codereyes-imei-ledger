@@ -2,7 +2,7 @@
 /**
  * Live IMEI check while the purchase form is being filled in.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -44,7 +44,7 @@ final class Imei_Ledger_Ajax {
 		check_ajax_referer( self::NONCE );
 
 		if ( ! current_user_can( Imei_Ledger_Installer::CAPABILITY ) ) {
-			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'imei-phone-ledger' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'codereyes-imei-ledger' ) ), 403 );
 		}
 
 		$imei       = Imei_Ledger_Imei::normalize( isset( $_POST['imei'] ) ? sanitize_text_field( wp_unslash( $_POST['imei'] ) ) : '' );

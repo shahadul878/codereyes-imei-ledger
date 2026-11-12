@@ -4,7 +4,7 @@
  *
  * Only the functions the classes under test call are stubbed.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 // phpcs:disable

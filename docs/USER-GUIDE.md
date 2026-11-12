@@ -1,6 +1,6 @@
-# IMEI Phone Ledger — User Guide
+# Codereyes IMEI Ledger — User Guide
 
-IMEI Phone Ledger keeps a record of every second-hand phone your shop buys and sells. Each phone is tracked by its IMEI, so you can look up its full history in seconds: who sold it to you, what you paid, who bought it, and what you earned.
+Codereyes IMEI Ledger keeps a record of every second-hand phone your shop buys and sells. Each phone is tracked by its IMEI, so you can look up its full history in seconds: who sold it to you, what you paid, who bought it, and what you earned.
 
 This guide is for shop owners and staff. It covers everyday use, from the first purchase to the monthly report.
 
@@ -28,7 +28,7 @@ This guide is for shop owners and staff. It covers everyday use, from the first 
 **Install:**
 
 1. In WordPress admin, go to **Plugins → Add New Plugin → Upload Plugin**.
-2. Choose `imei-phone-ledger.zip` and click **Install Now**, then **Activate**.
+2. Choose `codereyes-imei-ledger.zip` and click **Install Now**, then **Activate**.
 3. A new **IMEI Ledger** menu appears in the admin sidebar, with three pages:
 
 | Page | What it is for |

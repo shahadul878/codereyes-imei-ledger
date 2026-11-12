@@ -2,7 +2,7 @@
 /**
  * Template rendering, URLs and small display helpers for admin screens.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;

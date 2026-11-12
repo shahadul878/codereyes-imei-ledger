@@ -2,7 +2,7 @@
 /**
  * Tests for IMEI normalisation and Luhn validation.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

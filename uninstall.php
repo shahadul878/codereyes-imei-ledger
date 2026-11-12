@@ -7,7 +7,7 @@
  *
  *     define( 'IMEI_LEDGER_DELETE_DATA', true );
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;

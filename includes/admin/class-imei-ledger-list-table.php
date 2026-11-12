@@ -2,7 +2,7 @@
 /**
  * The phone list.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -64,12 +64,12 @@ final class Imei_Ledger_List_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		return array(
-			'imei'     => __( 'IMEI', 'imei-phone-ledger' ),
-			'phone'    => __( 'Phone', 'imei-phone-ledger' ),
-			'status'   => __( 'Status', 'imei-phone-ledger' ),
-			'purchase' => __( 'Bought', 'imei-phone-ledger' ),
-			'sale'     => __( 'Sold', 'imei-phone-ledger' ),
-			'profit'   => __( 'Profit', 'imei-phone-ledger' ),
+			'imei'     => __( 'IMEI', 'codereyes-imei-ledger' ),
+			'phone'    => __( 'Phone', 'codereyes-imei-ledger' ),
+			'status'   => __( 'Status', 'codereyes-imei-ledger' ),
+			'purchase' => __( 'Bought', 'codereyes-imei-ledger' ),
+			'sale'     => __( 'Sold', 'codereyes-imei-ledger' ),
+			'profit'   => __( 'Profit', 'codereyes-imei-ledger' ),
 		);
 	}
 
@@ -118,7 +118,7 @@ final class Imei_Ledger_List_Table extends WP_List_Table {
 	 */
 	protected function get_views() {
 		$current = $this->filters['status'];
-		$views   = array( '' => __( 'All', 'imei-phone-ledger' ) ) + Imei_Ledger_Status::labels();
+		$views   = array( '' => __( 'All', 'codereyes-imei-ledger' ) ) + Imei_Ledger_Status::labels();
 		$links   = array();
 
 		foreach ( $views as $status => $label ) {
@@ -140,11 +140,11 @@ final class Imei_Ledger_List_Table extends WP_List_Table {
 	 */
 	public function no_items() {
 		if ( '' !== $this->filters['search'] ) {
-			esc_html_e( 'No phone matches that search. Check the IMEI, or add it as a new purchase.', 'imei-phone-ledger' );
+			esc_html_e( 'No phone matches that search. Check the IMEI, or add it as a new purchase.', 'codereyes-imei-ledger' );
 			return;
 		}
 
-		esc_html_e( 'No phones yet. Add your first purchase to start the ledger.', 'imei-phone-ledger' );
+		esc_html_e( 'No phones yet. Add your first purchase to start the ledger.', 'codereyes-imei-ledger' );
 	}
 
 	/**
@@ -178,24 +178,24 @@ final class Imei_Ledger_List_Table extends WP_List_Table {
 		$id      = (int) $item['id'];
 		$is_sold = Imei_Ledger_Status::SOLD === $item['status'];
 		$actions = array(
-			'view' => sprintf( '<a href="%1$s">%2$s</a>', esc_url( Imei_Ledger_View::record_url( 'view', $id ) ), esc_html__( 'View', 'imei-phone-ledger' ) ),
-			'edit' => sprintf( '<a href="%1$s">%2$s</a>', esc_url( Imei_Ledger_View::record_url( 'edit', $id ) ), esc_html__( 'Edit', 'imei-phone-ledger' ) ),
+			'view' => sprintf( '<a href="%1$s">%2$s</a>', esc_url( Imei_Ledger_View::record_url( 'view', $id ) ), esc_html__( 'View', 'codereyes-imei-ledger' ) ),
+			'edit' => sprintf( '<a href="%1$s">%2$s</a>', esc_url( Imei_Ledger_View::record_url( 'edit', $id ) ), esc_html__( 'Edit', 'codereyes-imei-ledger' ) ),
 		);
 
 		if ( $is_sold ) {
 			$actions['cancel'] = sprintf(
 				'<a class="ipl-confirm-cancel" href="%1$s">%2$s</a>',
 				esc_url( Imei_Ledger_View::record_action_url( 'cancel_sale', $id ) ),
-				esc_html__( 'Cancel sale', 'imei-phone-ledger' )
+				esc_html__( 'Cancel sale', 'codereyes-imei-ledger' )
 			);
 		} else {
-			$actions['sell'] = sprintf( '<a href="%1$s"><strong>%2$s</strong></a>', esc_url( Imei_Ledger_View::record_url( 'sell', $id ) ), esc_html__( 'Sell', 'imei-phone-ledger' ) );
+			$actions['sell'] = sprintf( '<a href="%1$s"><strong>%2$s</strong></a>', esc_url( Imei_Ledger_View::record_url( 'sell', $id ) ), esc_html__( 'Sell', 'codereyes-imei-ledger' ) );
 		}
 
 		$actions['delete'] = sprintf(
 			'<a class="ipl-confirm-delete" href="%1$s">%2$s</a>',
 			esc_url( Imei_Ledger_View::record_action_url( 'delete', $id ) ),
-			esc_html__( 'Delete', 'imei-phone-ledger' )
+			esc_html__( 'Delete', 'codereyes-imei-ledger' )
 		);
 
 		return $actions;
@@ -251,7 +251,7 @@ final class Imei_Ledger_List_Table extends WP_List_Table {
 			return sprintf(
 				'<a class="button button-small" href="%1$s">%2$s</a>',
 				esc_url( Imei_Ledger_View::record_url( 'sell', (int) $item['id'] ) ),
-				esc_html__( 'Sell', 'imei-phone-ledger' )
+				esc_html__( 'Sell', 'codereyes-imei-ledger' )
 			);
 		}
 

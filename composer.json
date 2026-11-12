@@ -1,6 +1,6 @@
 {
-	"name": "shahadul878/imei-phone-ledger",
-	"description": "Development tooling for the IMEI Phone Ledger WordPress plugin.",
+	"name": "shahadul878/codereyes-imei-ledger",
+	"description": "Development tooling for the Codereyes IMEI Ledger WordPress plugin.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require-dev": {

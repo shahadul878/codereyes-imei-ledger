@@ -2,7 +2,7 @@
 /**
  * Tests for duplicate IMEI classification.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 /**
  * Tests for purchase and sale input validation.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

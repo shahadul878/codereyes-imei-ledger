@@ -2,7 +2,7 @@
 /**
  * Carries form input and errors across the post/redirect/get round trip.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;

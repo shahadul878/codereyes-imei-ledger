@@ -2,7 +2,7 @@
 /**
  * Digit helpers shared by IMEI, phone, NID and money parsing.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);

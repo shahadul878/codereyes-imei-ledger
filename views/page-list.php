@@ -2,7 +2,7 @@
 /**
  * All Phones screen.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  *
  * @var array $vars {
  *     @type Imei_Ledger_List_Table $table   List table (items prepared).
@@ -18,11 +18,11 @@ $imei_ledger_filters = $vars['filters'];
 <div class="wrap ipl">
 	<header class="ipl-header">
 		<div>
-			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'imei-phone-ledger' ); ?></p>
-			<h1 class="ipl-title"><?php esc_html_e( 'All phones', 'imei-phone-ledger' ); ?></h1>
+			<p class="ipl-eyebrow"><?php esc_html_e( 'IMEI Ledger', 'codereyes-imei-ledger' ); ?></p>
+			<h1 class="ipl-title"><?php esc_html_e( 'All phones', 'codereyes-imei-ledger' ); ?></h1>
 		</div>
 		<a class="button button-primary" href="<?php echo esc_url( Imei_Ledger_View::page_url( Imei_Ledger_View::PAGE_ADD ) ); ?>">
-			<?php esc_html_e( 'Add purchase', 'imei-phone-ledger' ); ?>
+			<?php esc_html_e( 'Add purchase', 'codereyes-imei-ledger' ); ?>
 		</a>
 	</header>
 	<hr class="wp-header-end">
@@ -34,7 +34,7 @@ $imei_ledger_filters = $vars['filters'];
 		'partials/summary-cards',
 		array(
 			'summary' => $vars['summary'],
-			'period'  => __( 'This month', 'imei-phone-ledger' ),
+			'period'  => __( 'This month', 'codereyes-imei-ledger' ),
 		)
 	);
 	?>
@@ -46,32 +46,32 @@ $imei_ledger_filters = $vars['filters'];
 		<?php endif; ?>
 
 		<div class="ipl-search__main">
-			<label class="screen-reader-text" for="ipl-search-input"><?php esc_html_e( 'Search phones', 'imei-phone-ledger' ); ?></label>
+			<label class="screen-reader-text" for="ipl-search-input"><?php esc_html_e( 'Search phones', 'codereyes-imei-ledger' ); ?></label>
 			<span class="dashicons dashicons-search" aria-hidden="true"></span>
-			<input type="search" id="ipl-search-input" name="s" value="<?php echo esc_attr( $imei_ledger_filters['search'] ); ?>" placeholder="<?php esc_attr_e( 'Search by IMEI, name, mobile number, NID or model', 'imei-phone-ledger' ); ?>" autocomplete="off">
-			<button type="submit" class="button button-primary"><?php esc_html_e( 'Search', 'imei-phone-ledger' ); ?></button>
+			<input type="search" id="ipl-search-input" name="s" value="<?php echo esc_attr( $imei_ledger_filters['search'] ); ?>" placeholder="<?php esc_attr_e( 'Search by IMEI, name, mobile number, NID or model', 'codereyes-imei-ledger' ); ?>" autocomplete="off">
+			<button type="submit" class="button button-primary"><?php esc_html_e( 'Search', 'codereyes-imei-ledger' ); ?></button>
 		</div>
 
 		<details class="ipl-search__more" <?php echo ( '' !== $imei_ledger_filters['date_from'] || '' !== $imei_ledger_filters['date_to'] ) ? 'open' : ''; ?>>
-			<summary><?php esc_html_e( 'Filter by date', 'imei-phone-ledger' ); ?></summary>
+			<summary><?php esc_html_e( 'Filter by date', 'codereyes-imei-ledger' ); ?></summary>
 			<div class="ipl-search__dates">
 				<label>
-					<span><?php esc_html_e( 'Date of', 'imei-phone-ledger' ); ?></span>
+					<span><?php esc_html_e( 'Date of', 'codereyes-imei-ledger' ); ?></span>
 					<select name="date_field">
-						<option value="purchase_date" <?php selected( $imei_ledger_filters['date_field'], 'purchase_date' ); ?>><?php esc_html_e( 'Purchase', 'imei-phone-ledger' ); ?></option>
-						<option value="sale_date" <?php selected( $imei_ledger_filters['date_field'], 'sale_date' ); ?>><?php esc_html_e( 'Sale', 'imei-phone-ledger' ); ?></option>
+						<option value="purchase_date" <?php selected( $imei_ledger_filters['date_field'], 'purchase_date' ); ?>><?php esc_html_e( 'Purchase', 'codereyes-imei-ledger' ); ?></option>
+						<option value="sale_date" <?php selected( $imei_ledger_filters['date_field'], 'sale_date' ); ?>><?php esc_html_e( 'Sale', 'codereyes-imei-ledger' ); ?></option>
 					</select>
 				</label>
 				<label>
-					<span><?php esc_html_e( 'From', 'imei-phone-ledger' ); ?></span>
+					<span><?php esc_html_e( 'From', 'codereyes-imei-ledger' ); ?></span>
 					<input type="date" name="date_from" value="<?php echo esc_attr( $imei_ledger_filters['date_from'] ); ?>">
 				</label>
 				<label>
-					<span><?php esc_html_e( 'To', 'imei-phone-ledger' ); ?></span>
+					<span><?php esc_html_e( 'To', 'codereyes-imei-ledger' ); ?></span>
 					<input type="date" name="date_to" value="<?php echo esc_attr( $imei_ledger_filters['date_to'] ); ?>">
 				</label>
-				<button type="submit" class="button"><?php esc_html_e( 'Apply', 'imei-phone-ledger' ); ?></button>
-				<a class="button-link" href="<?php echo esc_url( Imei_Ledger_View::page_url( Imei_Ledger_View::PAGE_LIST ) ); ?>"><?php esc_html_e( 'Clear', 'imei-phone-ledger' ); ?></a>
+				<button type="submit" class="button"><?php esc_html_e( 'Apply', 'codereyes-imei-ledger' ); ?></button>
+				<a class="button-link" href="<?php echo esc_url( Imei_Ledger_View::page_url( Imei_Ledger_View::PAGE_LIST ) ); ?>"><?php esc_html_e( 'Clear', 'codereyes-imei-ledger' ); ?></a>
 			</div>
 		</details>
 	</form>
@@ -89,7 +89,7 @@ $imei_ledger_filters = $vars['filters'];
 			<input type="hidden" name="date_to" value="<?php echo esc_attr( $imei_ledger_filters['date_to'] ); ?>">
 			<button type="submit" class="button">
 				<span class="dashicons dashicons-download" aria-hidden="true"></span>
-				<?php esc_html_e( 'Export CSV', 'imei-phone-ledger' ); ?>
+				<?php esc_html_e( 'Export CSV', 'codereyes-imei-ledger' ); ?>
 			</button>
 		</form>
 	</div>

@@ -1,5 +1,5 @@
 /**
- * IMEI Phone Ledger admin behaviour:
+ * Codereyes IMEI Ledger admin behaviour:
  * - live IMEI check on the purchase form
  * - profit preview on the sale form
  * - confirmation before delete / cancel sale

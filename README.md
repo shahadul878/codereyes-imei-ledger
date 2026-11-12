@@ -1,4 +1,4 @@
-# IMEI Phone Ledger
+# Codereyes IMEI Ledger for Mobile Shops
 
 A WordPress plugin for second-hand phone shops: a purchase and sale ledger where every phone is tracked by its IMEI.
 
@@ -23,19 +23,19 @@ A WordPress plugin for second-hand phone shops: a purchase and sale ledger where
 ## Project layout
 
 ```
-imei-phone-ledger.php        Bootstrap: constants, requires, hooks
-uninstall.php                Keeps data unless IMEI_LEDGER_DELETE_DATA is true
+codereyes-imei-ledger.php           Bootstrap: constants, requires, hooks
+uninstall.php                       Keeps data unless IMEI_LEDGER_DELETE_DATA is true
 includes/
-  class-imei-ledger-*.php    Pure rules (no WordPress needed): Digits, Imei, Money,
-                             Validator, Duplicates, Query, Csv, Status
+  class-imei-ledger-*.php           Pure rules (no WordPress needed): Digits, Imei,
+                                    Money, Validator, Duplicates, Query, Csv, Status
   class-imei-ledger-installer.php   Table (dbDelta) and capability
   class-imei-ledger-repository.php  All $wpdb access
-  admin/                     Menu, screens, admin-post handlers, AJAX, list table
-views/                       Templates (all output escaped)
-assets/                      admin.css, admin.js (no build step)
-tests/unit/                  PHPUnit tests for the pure rules
-docs/                        User guide and screenshots
-.wordpress-org/              WordPress.org screenshots (SVN assets/)
+  admin/                            Menu, screens, admin-post handlers, AJAX, list table
+views/                              Templates (all output escaped)
+assets/                             admin.css, admin.js (no build step)
+tests/unit/                         PHPUnit tests for the pure rules
+docs/                               User guide and screenshots
+.wordpress-org/                     WordPress.org screenshots (SVN assets/)
 ```
 
 Business rules live in the pure classes so they can be tested without WordPress or a database. The repository is the only class that talks to `$wpdb`; admin classes only read requests and render views.
@@ -59,25 +59,25 @@ phpcs --standard=WordPress --extensions=php --ignore=vendor/*,tests/* .
 ## Releasing
 
 1. **Bump the version** in three places:
-   - `imei-phone-ledger.php`: the `Version:` header and `IMEI_LEDGER_VERSION`
+   - `codereyes-imei-ledger.php`: the `Version:` header and `IMEI_LEDGER_VERSION`
    - `readme.txt`: `Stable tag:` plus a `== Changelog ==` entry (and `== Upgrade Notice ==` if needed)
    - If the table schema changed: `Imei_Ledger_Installer::DB_VERSION` and the `CREATE TABLE` SQL. `dbDelta` runs automatically when the stored version differs.
 2. **Check:** tests, PHPCS, then Plugin Check on the plugin.
 
    ```bash
-   wp plugin check imei-phone-ledger --exclude-directories=tests,vendor,docs --ignore-codes=hidden_files,application_detected,unexpected_markdown_file
+   wp plugin check codereyes-imei-ledger --exclude-directories=tests,vendor,docs --ignore-codes=hidden_files,application_detected,unexpected_markdown_file
    ```
 
 3. **Build the zip.** `wp dist-archive` honours `.distignore`, so tests, vendor, docs, `.wordpress-org` and Markdown files are left out.
 
    ```bash
-   wp dist-archive wp-content/plugins/imei-phone-ledger
+   wp dist-archive wp-content/plugins/codereyes-imei-ledger
    ```
 
 4. **Commit and tag:**
 
    ```bash
-   git tag -a v1.0.1 -m "IMEI Phone Ledger 1.0.1"
+   git tag -a v1.0.1 -m "Codereyes IMEI Ledger 1.0.1"
    ```
 
 5. **WordPress.org (SVN):** copy the zip's contents to `trunk/` and to `tags/<version>/`, and the files in `.wordpress-org/` to the top-level `assets/` directory.

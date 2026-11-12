@@ -1,18 +1,18 @@
-=== IMEI Phone Ledger ===
-Contributors: shahadul878
-Tags: imei, mobile shop, inventory, second hand, ledger
+=== Codereyes IMEI Ledger for Mobile Shops ===
+Contributors: shahadul878, codereyes
+Tags: imei, mobile shop, second hand phone, buy and sell, inventory
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A purchase and sale ledger for second-hand mobile phones, tracked by IMEI number.
+Buy and sell ledger for second-hand mobile phone shops. Track every used phone by IMEI, with sellers, buyers and profit.
 
 == Description ==
 
-IMEI Phone Ledger is built for shops that buy and sell used phones. Every phone is recorded by its IMEI, so you can find its full history in seconds: who sold it to you, for how much, who you sold it to, and what you earned.
+Codereyes IMEI Ledger is built for mobile shops that buy and sell second-hand (used) phones. Every phone is recorded by its IMEI, so you can find its full history in seconds: who sold it to you, for how much, who you sold it to, and what you earned.
 
 **Features**
 
@@ -33,7 +33,7 @@ Seller and buyer details, including NID numbers, are stored in your own WordPres
 
 == Installation ==
 
-1. Upload the `imei-phone-ledger` folder to `/wp-content/plugins/`.
+1. Upload the `codereyes-imei-ledger` folder to `/wp-content/plugins/`.
 2. Activate the plugin.
 3. Open **IMEI Ledger → Add Purchase** to record your first phone.
 
@@ -72,10 +72,16 @@ Any user with the `manage_imei_ledger` capability. Use a role editor plugin to g
 
 == Changelog ==
 
+= 1.0.1 =
+* Renamed to Codereyes IMEI Ledger for Mobile Shops (was IMEI Phone Ledger).
+
 = 1.0.0 =
 * First release.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+New plugin name; no functional changes.
 
 = 1.0.0 =
 First release.

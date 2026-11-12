@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap for pure-logic unit tests (no WordPress runtime).
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 define( 'ABSPATH', sys_get_temp_dir() . '/' );

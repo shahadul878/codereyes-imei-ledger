@@ -6,7 +6,7 @@
  * array( 'data' => clean values, 'errors' => field => message ). Only known
  * fields are copied, so the caller can pass $_POST straight in.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 declare(strict_types=1);
@@ -75,11 +75,11 @@ final class Imei_Ledger_Validator {
 	 */
 	public static function condition_labels(): array {
 		return array(
-			'new'      => __( 'New', 'imei-phone-ledger' ),
-			'like_new' => __( 'Like new', 'imei-phone-ledger' ),
-			'good'     => __( 'Good', 'imei-phone-ledger' ),
-			'fair'     => __( 'Fair', 'imei-phone-ledger' ),
-			'poor'     => __( 'Poor', 'imei-phone-ledger' ),
+			'new'      => __( 'New', 'codereyes-imei-ledger' ),
+			'like_new' => __( 'Like new', 'codereyes-imei-ledger' ),
+			'good'     => __( 'Good', 'codereyes-imei-ledger' ),
+			'fair'     => __( 'Fair', 'codereyes-imei-ledger' ),
+			'poor'     => __( 'Poor', 'codereyes-imei-ledger' ),
 		);
 	}
 
@@ -112,7 +112,7 @@ final class Imei_Ledger_Validator {
 
 		$has_both_imeis = '' !== $result['data']['imei2'] && ! isset( $result['errors']['imei2'] );
 		if ( $has_both_imeis && $result['data']['imei1'] === $result['data']['imei2'] ) {
-			$result['errors']['imei2'] = __( 'IMEI 2 must be different from IMEI 1.', 'imei-phone-ledger' );
+			$result['errors']['imei2'] = __( 'IMEI 2 must be different from IMEI 1.', 'codereyes-imei-ledger' );
 		}
 
 		return $result;
@@ -192,11 +192,11 @@ final class Imei_Ledger_Validator {
 		$value = Imei_Ledger_Imei::normalize( self::raw( $input, $key ) );
 
 		if ( '' === $value ) {
-			return array( '', $required ? __( 'IMEI is required.', 'imei-phone-ledger' ) : null );
+			return array( '', $required ? __( 'IMEI is required.', 'codereyes-imei-ledger' ) : null );
 		}
 
 		if ( ! Imei_Ledger_Imei::is_valid( $value ) ) {
-			return array( $value, __( 'This is not a valid IMEI. It must be 15 digits and pass the check-digit test. Dial *#06# on the phone to see it.', 'imei-phone-ledger' ) );
+			return array( $value, __( 'This is not a valid IMEI. It must be 15 digits and pass the check-digit test. Dial *#06# on the phone to see it.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -215,7 +215,7 @@ final class Imei_Ledger_Validator {
 		$value = mb_substr( $value, 0, self::TEXT_LIMITS[ $key ] ?? 191 );
 
 		if ( $required && '' === $value ) {
-			return array( '', __( 'This field is required.', 'imei-phone-ledger' ) );
+			return array( '', __( 'This field is required.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -242,7 +242,7 @@ final class Imei_Ledger_Validator {
 		$value = self::raw( $input, 'device_condition' );
 
 		if ( ! in_array( $value, self::CONDITIONS, true ) ) {
-			return array( '', __( 'Choose the phone condition.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Choose the phone condition.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -261,19 +261,19 @@ final class Imei_Ledger_Validator {
 		$value = trim( Imei_Ledger_Digits::to_ascii( self::raw( $input, $key ) ) );
 
 		if ( '' === $value ) {
-			return array( '', __( 'Date is required.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Date is required.', 'codereyes-imei-ledger' ) );
 		}
 
 		if ( ! self::is_date( $value ) ) {
-			return array( '', __( 'Enter a real date.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Enter a real date.', 'codereyes-imei-ledger' ) );
 		}
 
 		if ( $value > $today ) {
-			return array( $value, __( 'The date cannot be in the future.', 'imei-phone-ledger' ) );
+			return array( $value, __( 'The date cannot be in the future.', 'codereyes-imei-ledger' ) );
 		}
 
 		if ( null !== $min && $value < $min ) {
-			return array( $value, __( 'The sale date cannot be before the purchase date.', 'imei-phone-ledger' ) );
+			return array( $value, __( 'The sale date cannot be before the purchase date.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -302,13 +302,13 @@ final class Imei_Ledger_Validator {
 		$raw = trim( self::raw( $input, $key ) );
 
 		if ( '' === $raw ) {
-			return array( '', __( 'Price is required.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Price is required.', 'codereyes-imei-ledger' ) );
 		}
 
 		$value = Imei_Ledger_Money::parse( $raw );
 
 		if ( null === $value ) {
-			return array( '', __( 'Enter a price such as 15000 or 15000.50.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Enter a price such as 15000 or 15000.50.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -326,11 +326,11 @@ final class Imei_Ledger_Validator {
 		$value = (string) preg_replace( '/[\s\-().]+/', '', $value );
 
 		if ( '' === $value ) {
-			return array( '', __( 'Phone number is required.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Phone number is required.', 'codereyes-imei-ledger' ) );
 		}
 
 		if ( 1 !== preg_match( self::PHONE_PATTERN, $value ) ) {
-			return array( '', __( 'Enter a phone number with 6 to 15 digits.', 'imei-phone-ledger' ) );
+			return array( '', __( 'Enter a phone number with 6 to 15 digits.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );
@@ -352,7 +352,7 @@ final class Imei_Ledger_Validator {
 		}
 
 		if ( ! in_array( strlen( $value ), self::NID_LENGTHS, true ) ) {
-			return array( '', __( 'An NID number has 10, 13 or 17 digits.', 'imei-phone-ledger' ) );
+			return array( '', __( 'An NID number has 10, 13 or 17 digits.', 'codereyes-imei-ledger' ) );
 		}
 
 		return array( $value, null );

@@ -2,7 +2,7 @@
 /**
  * Tests for CSV report rows.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 use PHPUnit\Framework\TestCase;

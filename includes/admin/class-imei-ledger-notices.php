@@ -2,7 +2,7 @@
 /**
  * Success and error notices shown after a redirect.
  *
- * @package ImeiPhoneLedger
+ * @package CodereyesImeiLedger
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,16 +21,16 @@ final class Imei_Ledger_Notices {
 	 */
 	private static function messages(): array {
 		return array(
-			'purchase_added'   => array( 'success', __( 'Purchase saved. The phone is now in stock.', 'imei-phone-ledger' ) ),
-			'purchase_updated' => array( 'success', __( 'Purchase details updated.', 'imei-phone-ledger' ) ),
-			'sale_saved'       => array( 'success', __( 'Sale saved.', 'imei-phone-ledger' ) ),
-			'sale_cancelled'   => array( 'success', __( 'Sale cancelled. The phone is back in stock.', 'imei-phone-ledger' ) ),
-			'deleted'          => array( 'success', __( 'Record deleted.', 'imei-phone-ledger' ) ),
-			'not_found'        => array( 'error', __( 'That record no longer exists.', 'imei-phone-ledger' ) ),
-			'db_error'         => array( 'error', __( 'The record could not be saved. Please try again.', 'imei-phone-ledger' ) ),
-			'busy'             => array( 'error', __( 'Another save is in progress. Please try again.', 'imei-phone-ledger' ) ),
-			'cancel_blocked'   => array( 'error', __( 'This sale cannot be cancelled: the same IMEI has since been bought again and is in stock.', 'imei-phone-ledger' ) ),
-			'not_sold'         => array( 'error', __( 'Only phones that are sold can have their sale cancelled.', 'imei-phone-ledger' ) ),
+			'purchase_added'   => array( 'success', __( 'Purchase saved. The phone is now in stock.', 'codereyes-imei-ledger' ) ),
+			'purchase_updated' => array( 'success', __( 'Purchase details updated.', 'codereyes-imei-ledger' ) ),
+			'sale_saved'       => array( 'success', __( 'Sale saved.', 'codereyes-imei-ledger' ) ),
+			'sale_cancelled'   => array( 'success', __( 'Sale cancelled. The phone is back in stock.', 'codereyes-imei-ledger' ) ),
+			'deleted'          => array( 'success', __( 'Record deleted.', 'codereyes-imei-ledger' ) ),
+			'not_found'        => array( 'error', __( 'That record no longer exists.', 'codereyes-imei-ledger' ) ),
+			'db_error'         => array( 'error', __( 'The record could not be saved. Please try again.', 'codereyes-imei-ledger' ) ),
+			'busy'             => array( 'error', __( 'Another save is in progress. Please try again.', 'codereyes-imei-ledger' ) ),
+			'cancel_blocked'   => array( 'error', __( 'This sale cannot be cancelled: the same IMEI has since been bought again and is in stock.', 'codereyes-imei-ledger' ) ),
+			'not_sold'         => array( 'error', __( 'Only phones that are sold can have their sale cancelled.', 'codereyes-imei-ledger' ) ),
 		);
 	}
 
