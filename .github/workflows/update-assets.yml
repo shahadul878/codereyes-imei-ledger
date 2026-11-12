@@ -1,0 +1,39 @@
+# Pushes readme.txt and .wordpress-org/ (screenshots, banners, icons) to
+# WordPress.org without a new release, so listing fixes go live right away.
+# Uses the same SVN_USERNAME / SVN_PASSWORD secrets as deploy.yml.
+name: Update WordPress.org readme and assets
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - readme.txt
+      - .wordpress-org/**
+  workflow_dispatch:
+
+concurrency:
+  group: update-assets
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  assets:
+    name: Push readme and assets to SVN
+    runs-on: ubuntu-latest
+    environment:
+      name: wordpress.org
+      url: https://wordpress.org/plugins/codereyes-imei-ledger/
+    steps:
+      - uses: actions/checkout@v4
+
+      # IGNORE_OTHER_FILES: code changes on master since the last release are
+      # left alone; only readme.txt and the assets folder are synced.
+      - uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: codereyes-imei-ledger
+          IGNORE_OTHER_FILES: true

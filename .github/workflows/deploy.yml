@@ -1,0 +1,134 @@
+# Deploys the plugin to WordPress.org when a version tag (v1.2.3) is pushed.
+#
+# Required repository secrets:
+#   SVN_USERNAME  your WordPress.org username
+#   SVN_PASSWORD  the SVN password from your WordPress.org profile
+#                 (Account & Security -> "Generate SVN password")
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  SLUG: codereyes-imei-ledger
+
+jobs:
+  version:
+    name: Check version numbers
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tag must match plugin header, constant and Stable tag
+        id: check
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          header=$(grep -Po '^\s*\*\s*Version:\s*\K[0-9.]+' "$SLUG.php")
+          constant=$(grep -Po "define\(\s*'IMEI_LEDGER_VERSION',\s*'\K[0-9.]+" "$SLUG.php")
+          stable=$(grep -Po '^Stable tag:\s*\K[0-9.]+' readme.txt)
+          echo "tag=$tag header=$header constant=$constant stable=$stable"
+          for v in "$header" "$constant" "$stable"; do
+            if [ "$v" != "$tag" ]; then
+              echo "::error::Version mismatch. Tag $tag, header $header, IMEI_LEDGER_VERSION $constant, Stable tag $stable."
+              exit 1
+            fi
+          done
+          if ! grep -q "^= $tag =" readme.txt; then
+            echo "::error::readme.txt has no '= $tag =' changelog entry."
+            exit 1
+          fi
+          echo "version=$tag" >> "$GITHUB_OUTPUT"
+
+  test:
+    name: PHPUnit (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: ["7.4", "8.3"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer
+
+      # composer.lock is resolved for PHP 8.1+, so PHP 7.4 resolves its own set.
+      - name: Install dev dependencies
+        run: |
+          if [ "${{ matrix.php }}" = "7.4" ]; then
+            composer update --no-interaction --no-progress --prefer-dist
+          else
+            composer install --no-interaction --no-progress --prefer-dist
+          fi
+
+      - name: Lint PHP files
+        run: find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+  plugin-check:
+    name: Plugin Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Check exactly what ships: the repo minus everything in .distignore.
+      - name: Build release folder
+        run: |
+          mkdir -p "build/$SLUG"
+          rsync -a --exclude=build --exclude-from=.distignore ./ "build/$SLUG/"
+
+      - uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: build/${{ env.SLUG }}
+
+  deploy:
+    name: Deploy to WordPress.org
+    needs: [version, test, plugin-check]
+    runs-on: ubuntu-latest
+    environment:
+      name: wordpress.org
+      url: https://wordpress.org/plugins/${{ env.SLUG }}/
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to SVN
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: ${{ env.SLUG }}
+          VERSION: ${{ needs.version.outputs.version }}
+
+      - name: Name the zip like earlier releases
+        id: zip
+        run: |
+          zip="$SLUG.${{ needs.version.outputs.version }}.zip"
+          mv "${{ steps.deploy.outputs.zip-path }}" "$zip"
+          echo "path=$zip" >> "$GITHUB_OUTPUT"
+
+      - name: Attach zip to the GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.zip.outputs.path }}
+          generate_release_notes: true

@@ -74,13 +74,39 @@ phpcs --standard=WordPress --extensions=php --ignore=vendor/*,tests/* .
    wp dist-archive wp-content/plugins/codereyes-imei-ledger
    ```
 
-4. **Commit and tag:**
+4. **Commit, tag and push.** Pushing the tag starts the deploy (see below).
 
    ```bash
    git tag -a v1.0.1 -m "Codereyes IMEI Ledger 1.0.1"
    ```
 
-5. **WordPress.org (SVN):** copy the zip's contents to `trunk/` and to `tags/<version>/`, and the files in `.wordpress-org/` to the top-level `assets/` directory.
+   ```bash
+   git push origin master v1.0.1
+   ```
+
+### Automated deploys (GitHub Actions)
+
+| Workflow | Runs when | What it does |
+|---|---|---|
+| `.github/workflows/deploy.yml` | A `v*.*.*` tag is pushed | Checks the tag matches the plugin header, `IMEI_LEDGER_VERSION`, `Stable tag` and has a changelog entry. Runs PHPUnit on PHP 7.4 and 8.3 and Plugin Check on the shipped files. If all pass, commits to SVN `trunk/` and `tags/<version>/`, syncs `.wordpress-org/` to `assets/`, and attaches the zip to a GitHub release. |
+| `.github/workflows/update-assets.yml` | `readme.txt` or `.wordpress-org/` changes on `master` (or run by hand) | Pushes only the readme and screenshots/banners/icons to WordPress.org, without a release. |
+
+One-time setup, after WordPress.org approves the plugin and creates the SVN repository:
+
+1. On WordPress.org, open **Edit Profile → Account & Security** and generate an SVN password.
+2. Add two repository secrets (**Settings → Secrets and variables → Actions**), or from the terminal:
+
+   ```bash
+   gh secret set SVN_USERNAME -R shahadul878/codereyes-imei-ledger
+   ```
+
+   ```bash
+   gh secret set SVN_PASSWORD -R shahadul878/codereyes-imei-ledger
+   ```
+
+3. Optional: under **Settings → Environments → wordpress.org**, add yourself as a required reviewer so every deploy waits for your approval.
+
+Both workflows fail until the SVN repository exists, so don't push a release tag before approval.
 
 ## Security notes
 
