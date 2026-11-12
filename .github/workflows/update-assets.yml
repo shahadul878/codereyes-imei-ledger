@@ -27,7 +27,7 @@ jobs:
       name: wordpress.org
       url: https://wordpress.org/plugins/codereyes-imei-ledger/
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # IGNORE_OTHER_FILES: code changes on master since the last release are
       # left alone; only readme.txt and the assets folder are synced.

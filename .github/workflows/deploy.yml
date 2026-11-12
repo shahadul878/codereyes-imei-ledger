@@ -1,4 +1,7 @@
 # Deploys the plugin to WordPress.org when a version tag (v1.2.3) is pushed.
+# It can also be run by hand (Actions -> Deploy to WordPress.org -> Run
+# workflow) to deploy the current branch as a given version, e.g. to retry a
+# failed deploy. A manual run does not touch the GitHub release.
 #
 # Required repository secrets:
 #   SVN_USERNAME  your WordPress.org username
@@ -10,6 +13,12 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to deploy (must match the plugin header, e.g. 1.0.1)"
+        required: true
+        type: string
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -28,12 +37,15 @@ jobs:
     outputs:
       version: ${{ steps.check.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Tag must match plugin header, constant and Stable tag
         id: check
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          tag="${GITHUB_REF_NAME#v}"
+          tag="${INPUT_VERSION:-$GITHUB_REF_NAME}"
+          tag="${tag#v}"
           header=$(grep -Po '^\s*\*\s*Version:\s*\K[0-9.]+' "$SLUG.php")
           constant=$(grep -Po "define\(\s*'IMEI_LEDGER_VERSION',\s*'\K[0-9.]+" "$SLUG.php")
           stable=$(grep -Po '^Stable tag:\s*\K[0-9.]+' readme.txt)
@@ -58,7 +70,7 @@ jobs:
       matrix:
         php: ["7.4", "8.3"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -85,7 +97,7 @@ jobs:
     name: Plugin Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Check exactly what ships: the repo minus everything in .distignore.
       - name: Build release folder
@@ -107,7 +119,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Deploy to SVN
         id: deploy
@@ -121,6 +133,7 @@ jobs:
           VERSION: ${{ needs.version.outputs.version }}
 
       - name: Name the zip like earlier releases
+        if: github.event_name == 'push'
         id: zip
         run: |
           zip="$SLUG.${{ needs.version.outputs.version }}.zip"
@@ -128,6 +141,7 @@ jobs:
           echo "path=$zip" >> "$GITHUB_OUTPUT"
 
       - name: Attach zip to the GitHub release
+        if: github.event_name == 'push'
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.zip.outputs.path }}
